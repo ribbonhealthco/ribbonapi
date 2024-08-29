@@ -14,7 +14,8 @@ from pathlib import Path
 
 from environs import Env
 
-from .config.infisical import inf_secret
+from config.infisical import inf_secret
+from config.zepto import SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_FROM_EMAIL
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,6 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third-party apps
+    'rest_framework',
+
+    # first-party apps
+    'misc',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +140,18 @@ STATIC_ROOT = Path(BASE_DIR) / 'static'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email config
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = SMTP_HOST
+EMAIL_PORT = SMTP_PORT
+EMAIL_HOST_USER = SMTP_USER
+EMAIL_HOST_PASSWORD = SMTP_PASSWORD
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_SSL_CERTFILE = None
+EMAIL_SSL_KEYFILE = None
+EMAIL_TIMEOUT = 10
+DEFAULT_FROM_EMAIL = SMTP_FROM_EMAIL
+
+

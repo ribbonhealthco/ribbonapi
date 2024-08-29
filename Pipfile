@@ -9,8 +9,11 @@ environs = "*"
 infisical-python = "*"
 psycopg2-binary = "*"
 gunicorn = "*"
+djangorestframework = "*"
+requests = "*"
 
 [dev-packages]
+ipython = "*"
 
 [requires]
 python_version = "3.12"
