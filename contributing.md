@@ -72,7 +72,7 @@ Your first task is to update the `README` file with your name.
     2. `git commit -m "adding a new contributor"`
     3. `git push origin new-contributor-deji`
 4. Open the repo on your browser and create a new Pull Request. Assign the PR to @thedejijoseph
-5. The PR will be reviewed and merged if it does not conflict
+5. The PR will be reviewed and merged if it does not create a conflict
 
 ### 3. Running the server
 
@@ -88,7 +88,7 @@ To run the server,
         1. Navigate to the `ribbonapi` project
         2. Go to Access Control
         3. Under the Machine Identities tab…
-        4. Create a new machine, titled “<Name>’s Machine”
+        4. Create a new machine, titled “your-name’s Machine”
         5. Create a new Client Secret
 3. Put these variables into your dev environment
     1. Create a .env file in your root dir (same dir as manage.py)
@@ -99,7 +99,7 @@ To run the server,
 4. Create your Postgres database
     1. Put your postgres credentials in your .env file
 5. Your server should run fine
-    1. Running `python [manage.py](http://manage.py) runserver` should work just fine
+    1. Running `python manage.py runserver` should work just fine
     2. Running `gunicorn mediq.wsgi`  should also work just fine
     3. If you have Heroku installed, you could also run `heroku local`
 
