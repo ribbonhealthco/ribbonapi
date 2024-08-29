@@ -18,11 +18,17 @@ inf_client = InfisicalClient(ClientSettings(
 inf_env = env.str('INFISICAL_ENV')
 inf_project_id = env.str('INFISICAL_PROJECT_ID')
 
-def inf_secret(key: str, env: str=inf_env, project_id: str=inf_project_id) -> str:
-    secret = inf_client.getSecret(options=GetSecretOptions(
-       environment=env,
-       project_id=project_id,
-       secret_name=key
-    ))
+def inf_secret(key: str, env: str=inf_env, project_id: str=inf_project_id, default=None) -> str:
+    try:
+        secret = inf_client.getSecret(options=GetSecretOptions(
+        environment=env,
+        project_id=project_id,
+        secret_name=key
+        ))
 
-    return secret.secret_value
+        return secret.secret_value
+    except Exception as e:
+        if default:
+            return default
+        else:
+            raise e
