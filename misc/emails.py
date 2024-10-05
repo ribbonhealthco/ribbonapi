@@ -204,10 +204,12 @@ def send_email(
     if bcc is None:
         bcc = []
 
-    # Try sending via ZeptoMail API
-    # status_code = send_single_email_api(to, template_id, vars, cc, bcc)
-    status_code = None
+    # Try sending via ZeptoMail API using the template_id and vars
+    if template_id:
+        status_code = send_single_email_api(to, template_id, vars, cc, bcc)
+    else:
+        status_code = None
     
-    # Fallback to SMTP if API fails
+     # Fallback to SMTP if API fails or if no template_id was provided
     if not status_code or status_code != 201:
         send_single_email_smtp(to, subject, plain_text, html_page, cc, bcc)
