@@ -1,7 +1,3 @@
-Here's a short README for your project:
-
----
-
 # Ribbon Health API
 
 ## Overview
