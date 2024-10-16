@@ -23,5 +23,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     # path('admin/', admin.site.urls),
     path('misc/', include('misc.urls')),
-    path('v1/onboarding', include('onboarding.urls')),
+    path('v1/onboarding/', include('onboarding.urls')),
 ]
