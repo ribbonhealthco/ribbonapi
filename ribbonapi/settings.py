@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 from environs import Env
 
@@ -48,9 +49,13 @@ INSTALLED_APPS = [
 
     # third-party apps
     'rest_framework',
+    'rest_framework_simplejwt',
 
     # first-party apps
     'misc',
+    'onboarding',
+    'organisations',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -154,4 +159,14 @@ EMAIL_SSL_KEYFILE = None
 EMAIL_TIMEOUT = 10
 DEFAULT_FROM_EMAIL = SMTP_FROM_EMAIL
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
 
